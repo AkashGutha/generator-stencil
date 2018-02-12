@@ -5,7 +5,6 @@ const changeCase = require('change-case');
 module.exports = class extends Generator {
   prompting() {
     const sassSupport = this.options.sassSupport;
-    console.log(sassSupport)
 
     let prompts = [
       {
