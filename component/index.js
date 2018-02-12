@@ -10,6 +10,11 @@ module.exports = class extends Generator {
         name: 'componentName',
         message: "What is your component's name?",
         default: 'MyComponent'
+      },
+      {
+        type: 'confirm',
+        name: 'sassSupport',
+        message: 'Would you like to enable Sass?'
       }
     ];
 
@@ -28,5 +33,21 @@ module.exports = class extends Generator {
       this.destinationPath(`src/components/${changeCase.paramCase(componentName)}.tsx`),
       this.props
     );
+
+    if (this.props.sassSupport) {
+      this.fs.copyTpl(
+        this.templatePath(`_component.scss`),
+        this.destinationPath(
+          `src/components/${changeCase.paramCase(componentName)}.scss`
+        ),
+        this.props
+      );
+    } else {
+      this.fs.copyTpl(
+        this.templatePath(`_component.css`),
+        this.destinationPath(`src/components/${changeCase.paramCase(componentName)}.css`),
+        this.props
+      );
+    }
   }
 };
