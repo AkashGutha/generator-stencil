@@ -25,19 +25,12 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.composeWith('stencil:component', this.props);
-
     this.fs.copyTpl(
-      this.templatePath(`../app/**`),
-      this.destinationPath(`/`),
+      this.templatePath('app/**/*.*'),
+      this.destinationPath('/'),
       this.props
     );
-
-    // this.fs.copyTpl(
-    //   this.templatePath(`_component.tsx`),
-    //   this.destinationPath(`src/components/${changeCase.paramCase(componentName)}.tsx`),
-    //   this.props
-    // );
+    this.composeWith('stencil:component', this.props);
   }
 
   install() {
