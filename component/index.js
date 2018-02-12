@@ -7,26 +7,36 @@ const composeObjs = require('./../utils/ComposeObjects');
 module.exports = class extends Generator {
   prompting() {
     const sassSupport = this.options.sassSupport;
+    const tsSupport = this.options.tsSupport;
 
     let prompts = [
       {
         type: 'input',
         name: 'componentName',
-        message: "What is your component's name?",
+        message: 'Name your component:',
         default: 'MyComponent'
       }
     ];
 
+    if (tsSupport === undefined) {
+      prompts.push({
+        type: 'confirm',
+        name: 'tsSupport',
+        message: 'Want to enable Typescript support?'
+      });
+    }
     if (sassSupport === undefined) {
       prompts.push({
         type: 'confirm',
         name: 'sassSupport',
-        message: 'Would you like to enable Sass?',
-        store: true
+        message: 'Want to enable Sass?'
       });
-    } else {
-      this.props = composeObjs(this.props, { sassSupport: sassSupport });
     }
+
+    this.props = composeObjs(this.props, {
+      sassSupport: sassSupport,
+      tsSupport: tsSupport
+    });
 
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
@@ -38,21 +48,35 @@ module.exports = class extends Generator {
     const componentName = this.props.componentName;
     this.props.paramCaseComponentName = changeCase.paramCase(componentName);
 
-    this.fs.copyTpl(
-      this.templatePath(`_component.tsx`),
-      this.destinationPath(
-        `src/components/${changeCase.paramCase(componentName)}/
-        ${changeCase.paramCase(componentName)}.tsx`
-      ),
-      this.props
-    );
+    if (this.props.tsSupport) {
+      this.fs.copyTpl(
+        this.templatePath(`_component.tsx`),
+        this.destinationPath(
+          `src/components/${changeCase.paramCase(componentName)}/${changeCase.paramCase(
+            componentName
+          )}.tsx`
+        ),
+        this.props
+      );
+    } else {
+      this.fs.copyTpl(
+        this.templatePath(`_component.tsx`),
+        this.destinationPath(
+          `src/components/${changeCase.paramCase(componentName)}/${changeCase.paramCase(
+            componentName
+          )}.jsx`
+        ),
+        this.props
+      );
+    }
 
     if (this.props.sassSupport) {
       this.fs.copyTpl(
         this.templatePath(`_component.scss`),
         this.destinationPath(
-          `src/components/${changeCase.paramCase(componentName)}/
-          ${changeCase.paramCase(componentName)}.scss`
+          `src/components/${changeCase.paramCase(componentName)}/${changeCase.paramCase(
+            componentName
+          )}.scss`
         ),
         this.props
       );
@@ -60,8 +84,9 @@ module.exports = class extends Generator {
       this.fs.copyTpl(
         this.templatePath(`_component.css`),
         this.destinationPath(
-          `src/components/${changeCase.paramCase(componentName)}/
-          ${changeCase.paramCase(componentName)}.css`
+          `src/components/${changeCase.paramCase(componentName)}/${changeCase.paramCase(
+            componentName
+          )}.css`
         ),
         this.props
       );
