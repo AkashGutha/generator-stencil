@@ -33,13 +33,16 @@ module.exports = class extends Generator {
   writing() {
     this.fs.copyTpl(
       this.templatePath('app/**/*.*'),
-      this.destinationPath('/'),
+      this.destinationPath(''),
       this.props
     );
     this.composeWith('stencil:component', this.props);
   }
 
   install() {
-    this.installDependencies();
+    this.installDependencies({
+      npm: true,
+      bower: false
+    });
   }
 };
