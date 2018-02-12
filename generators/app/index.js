@@ -19,7 +19,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'description',
-        message: 'Describe your app in less than 2 lines',
+        message: 'Describe your app:',
         default: 'description'
       }
     ];
