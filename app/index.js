@@ -13,7 +13,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'appName',
-        message: "What is your app's name?",
+        message: 'Name your app',
         default: 'app'
       },
       {
@@ -24,8 +24,14 @@ module.exports = class extends Generator {
       },
       {
         type: 'confirm',
+        name: 'tsSupport',
+        message: 'Want to enable Typescript support?',
+        store: true
+      },
+      {
+        type: 'confirm',
         name: 'sassSupport',
-        message: 'Would you like to enable Sass?',
+        message: 'Want to enable Sass?',
         store: true
       }
     ];
@@ -43,7 +49,8 @@ module.exports = class extends Generator {
       this.props
     );
     this.composeWith('stencil:component', {
-      sassSupport: this.props.sassSupport
+      sassSupport: this.props.sassSupport,
+      tsSupport: this.props.tsSupport
     });
   }
 
