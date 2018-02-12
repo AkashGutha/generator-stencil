@@ -1,11 +1,9 @@
 'use strict';
 const Generator = require('yeoman-generator');
-const chalk = require('chalk');
 const changeCase = require('change-case');
 
 module.exports = class extends Generator {
   prompting() {
-
     const prompts = [
       {
         type: 'input',
