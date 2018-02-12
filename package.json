@@ -1,6 +1,6 @@
 {
   "name": "generator-stencil",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "scaffolding tool for stencil compiler",
   "homepage": "",
   "author": {
@@ -9,9 +9,11 @@
     "url": ""
   },
   "files": [
-    "generators"
+    "app",
+    "component",
+    "licenses"
   ],
-  "main": "generators/index.js",
+  "main": "app/index.js",
   "keywords": [
     "stencil",
     "js",
