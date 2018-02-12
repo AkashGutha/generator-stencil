@@ -44,8 +44,4 @@ module.exports = class extends Generator {
       this.props
     );
   }
-
-  install() {
-    this.installDependencies();
-  }
 };
