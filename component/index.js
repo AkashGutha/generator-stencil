@@ -40,7 +40,10 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath(`_component.tsx`),
-      this.destinationPath(`src/components/${changeCase.paramCase(componentName)}.tsx`),
+      this.destinationPath(
+        `src/components/${changeCase.paramCase(componentName)}/
+        ${changeCase.paramCase(componentName)}.tsx`
+      ),
       this.props
     );
 
