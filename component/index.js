@@ -1,13 +1,15 @@
 'use strict';
 const Generator = require('yeoman-generator');
 const changeCase = require('change-case');
-
+const _ = require('lodash');
 const composeObjs = require('./../utils/ComposeObjects');
 
 module.exports = class extends Generator {
   prompting() {
-    const sassSupport = this.options.sassSupport;
-    const tsSupport = this.options.tsSupport;
+    const prompValues = this.config.get('promptValues');
+
+    const sassSupport = this.options.sassSupport || _.get(prompValues, 'sassSupport');
+    const tsSupport = this.options.tsSupport || _.get(prompValues, 'tsSupport');
 
     let prompts = [
       {
