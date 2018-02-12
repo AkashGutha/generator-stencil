@@ -59,7 +59,10 @@ module.exports = class extends Generator {
     } else {
       this.fs.copyTpl(
         this.templatePath(`_component.css`),
-        this.destinationPath(`src/components/${changeCase.paramCase(componentName)}.css`),
+        this.destinationPath(
+          `src/components/${changeCase.paramCase(componentName)}/
+          ${changeCase.paramCase(componentName)}.css`
+        ),
         this.props
       );
     }
