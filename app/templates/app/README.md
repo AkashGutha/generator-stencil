@@ -1,5 +1,5 @@
 # <%= appName %>
 
-> <%= description %>
+<%= description %>
 
 
