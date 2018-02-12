@@ -23,7 +23,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'componentName',
-        message: 'Choose a',
+        message: 'Choose a license',
         default: 'MyComponent'
       }
     ];

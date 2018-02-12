@@ -25,9 +25,6 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    const componentName = this.props.componentName;
-    this.props.paramCaseComponentName = changeCase.paramCase(componentName);
-
     this.composeWith('stencil:component', this.props);
 
     this.fs.copyTpl(
