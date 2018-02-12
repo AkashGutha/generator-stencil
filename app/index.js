@@ -21,6 +21,12 @@ module.exports = class extends Generator {
         name: 'description',
         message: 'Describe your app:',
         default: 'description'
+      },
+      {
+        type: 'confirm',
+        name: 'sassSupport',
+        message: 'Would you like to enable Sass?',
+        store: true
       }
     ];
 
@@ -36,7 +42,9 @@ module.exports = class extends Generator {
       this.destinationPath(''),
       this.props
     );
-    this.composeWith('stencil:component', this.props);
+    this.composeWith('stencil:component', {
+      sassSupport: this.props.sassSupport
+    });
   }
 
   install() {

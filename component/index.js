@@ -4,23 +4,32 @@ const changeCase = require('change-case');
 
 module.exports = class extends Generator {
   prompting() {
-    const prompts = [
+    const sassSupport = this.options.sassSupport;
+    console.log(sassSupport)
+
+    let prompts = [
       {
         type: 'input',
         name: 'componentName',
         message: "What is your component's name?",
         default: 'MyComponent'
-      },
-      {
-        type: 'confirm',
-        name: 'sassSupport',
-        message: 'Would you like to enable Sass?'
       }
     ];
 
+    if (sassSupport === undefined) {
+      prompts.push({
+        type: 'confirm',
+        name: 'sassSupport',
+        message: 'Would you like to enable Sass?',
+        store: true
+      });
+    } else {
+      this.props = { ...this.props, sassSupport: sassSupport };
+    }
+
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
-      this.props = props;
+      this.props = { ...this.props, ...props };
     });
   }
 
