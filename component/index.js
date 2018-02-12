@@ -51,7 +51,8 @@ module.exports = class extends Generator {
       this.fs.copyTpl(
         this.templatePath(`_component.scss`),
         this.destinationPath(
-          `src/components/${changeCase.paramCase(componentName)}.scss`
+          `src/components/${changeCase.paramCase(componentName)}/
+          ${changeCase.paramCase(componentName)}.scss`
         ),
         this.props
       );
