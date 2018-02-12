@@ -15,12 +15,6 @@ module.exports = class extends Generator {
         name: 'appName',
         message: "What is your app's name?",
         default: 'app'
-      },
-      {
-        type: 'input',
-        name: 'componentName',
-        message: 'Would you like your component name to be?',
-        default: 'my-component'
       }
     ];
 
@@ -34,17 +28,19 @@ module.exports = class extends Generator {
     const componentName = this.props.componentName;
     this.props.paramCaseComponentName = changeCase.paramCase(componentName);
 
+    this.composeWith('stencil:component', this.props);
+
     this.fs.copyTpl(
       this.templatePath(`../app/**`),
       this.destinationPath(`/`),
       this.props
     );
 
-    this.fs.copyTpl(
-      this.templatePath(`_component.tsx`),
-      this.destinationPath(`src/components/${changeCase.paramCase(componentName)}.tsx`),
-      this.props
-    );
+    // this.fs.copyTpl(
+    //   this.templatePath(`_component.tsx`),
+    //   this.destinationPath(`src/components/${changeCase.paramCase(componentName)}.tsx`),
+    //   this.props
+    // );
   }
 
   install() {
