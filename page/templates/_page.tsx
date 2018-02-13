@@ -8,7 +8,7 @@ export class <%=pageName%> {
   render() {
     return (
       <div>
-        <%= pageName %>
+        <h1><%= pageName %></h1>
       </div>
     );
   }

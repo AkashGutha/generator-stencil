@@ -74,7 +74,7 @@ module.exports = class extends Generator {
 
     if (this.props.sassSupport) {
       this.fs.copyTpl(
-        this.templatePath(`_styles.scss`),
+        this.templatePath(`_page.scss`),
         this.destinationPath(
           `src/pages/${changeCase.paramCase(pageName)}/${changeCase.paramCase(
             pageName
@@ -84,7 +84,7 @@ module.exports = class extends Generator {
       );
     } else {
       this.fs.copyTpl(
-        this.templatePath(`_styles.css`),
+        this.templatePath(`_page.css`),
         this.destinationPath(
           `src/pages/${changeCase.paramCase(pageName)}/${changeCase.paramCase(
             pageName
