@@ -9,7 +9,6 @@ module.exports = class extends Generator {
     const prompValues = this.config.get('promptValues');
 
     const sassSupport = this.options.sassSupport || _.get(prompValues, 'sassSupport');
-    const tsSupport = this.options.tsSupport || _.get(prompValues, 'tsSupport');
 
     let prompts = [
       {
@@ -20,13 +19,6 @@ module.exports = class extends Generator {
       }
     ];
 
-    if (tsSupport === undefined) {
-      prompts.push({
-        type: 'confirm',
-        name: 'tsSupport',
-        message: 'Want to enable Typescript support?'
-      });
-    }
     if (sassSupport === undefined) {
       prompts.push({
         type: 'confirm',
@@ -36,8 +28,7 @@ module.exports = class extends Generator {
     }
 
     this.props = composeObjs(this.props, {
-      sassSupport: sassSupport,
-      tsSupport: tsSupport
+      sassSupport: sassSupport
     });
 
     return this.prompt(prompts).then(props => {
@@ -50,27 +41,15 @@ module.exports = class extends Generator {
     const pageName = this.props.pageName;
     this.props.paramCasePageName = changeCase.paramCase(pageName);
 
-    if (this.props.tsSupport) {
-      this.fs.copyTpl(
-        this.templatePath(`_page.tsx`),
-        this.destinationPath(
-          `src/pages/${changeCase.paramCase(pageName)}/${changeCase.paramCase(
-            pageName
-          )}.tsx`
-        ),
-        this.props
-      );
-    } else {
-      this.fs.copyTpl(
-        this.templatePath(`_page.tsx`),
-        this.destinationPath(
-          `src/pages/${changeCase.paramCase(pageName)}/${changeCase.paramCase(
-            pageName
-          )}.jsx`
-        ),
-        this.props
-      );
-    }
+    this.fs.copyTpl(
+      this.templatePath(`_page.tsx`),
+      this.destinationPath(
+        `src/pages/${changeCase.paramCase(pageName)}/${changeCase.paramCase(
+          pageName
+        )}.tsx`
+      ),
+      this.props
+    );
 
     if (this.props.sassSupport) {
       this.fs.copyTpl(

@@ -24,12 +24,6 @@ module.exports = class extends Generator {
       },
       {
         type: 'confirm',
-        name: 'tsSupport',
-        message: 'Want to enable Typescript support?',
-        store: true
-      },
-      {
-        type: 'confirm',
         name: 'sassSupport',
         message: 'Want to enable Sass?',
         store: true
@@ -55,12 +49,10 @@ module.exports = class extends Generator {
       this.props
     );
     this.composeWith('stencil:page', {
-      sassSupport: this.props.sassSupport,
-      tsSupport: this.props.tsSupport
+      sassSupport: this.props.sassSupport
     });
     this.composeWith('stencil:component', {
-      sassSupport: this.props.sassSupport,
-      tsSupport: this.props.tsSupport
+      sassSupport: this.props.sassSupport
     });
   }
 
