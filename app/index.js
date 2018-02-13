@@ -3,17 +3,33 @@ const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const changeCase = require('change-case');
+const composeObjs = require('./../utils/ComposeObjects');
 
 module.exports = class extends Generator {
+
+  constructor(args, opts) {
+    super(args, opts);
+
+    this.option('skip-welcome-message', {
+      desc: 'Skips the welcome message',
+      type: Boolean
+    });
+  }
+
   prompting() {
-    // Have Yeoman greet the user.
-    this.log(yosay('Welcome to ' + chalk.red('stencil') + ' generator!'));
+    if (!this.options['skip-welcome-message']) {
+      // Have Yeoman greet the user.
+      this.log(yosay('Welcome to ' + chalk.red('stencil') + ' generator!'));
+    }
+
+    const name = this.user.git.name();
+    const email = this.user.git.email();
 
     const prompts = [
       {
         type: 'input',
         name: 'appName',
-        message: 'Name your app',
+        message: 'Name your app:',
         default: 'app'
       },
       {
@@ -45,6 +61,7 @@ module.exports = class extends Generator {
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
       this.props = props;
+      this.props = composeObjs(this.props, { username: name }, { email: email });
     });
   }
 
