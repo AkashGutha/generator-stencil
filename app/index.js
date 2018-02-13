@@ -30,6 +30,12 @@ module.exports = class extends Generator {
       },
       {
         type: 'confirm',
+        name: 'testSupport',
+        message: 'Want to enable Unit testing?',
+        store: true
+      },
+      {
+        type: 'confirm',
         name: 'stencilRouterSupport',
         message: 'Want to include stencil router?',
         store: true
@@ -49,10 +55,12 @@ module.exports = class extends Generator {
       this.props
     );
     this.composeWith('stencil:page', {
-      sassSupport: this.props.sassSupport
+      sassSupport: this.props.sassSupport,
+      testSupport: this.props.testSupport
     });
     this.composeWith('stencil:component', {
-      sassSupport: this.props.sassSupport
+      sassSupport: this.props.sassSupport,
+      testSupport: this.props.testSupport
     });
   }
 

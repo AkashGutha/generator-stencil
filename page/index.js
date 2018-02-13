@@ -7,7 +7,6 @@ const composeObjs = require('./../utils/ComposeObjects');
 module.exports = class extends Generator {
   prompting() {
     const prompValues = this.config.get('promptValues');
-
     const sassSupport = this.options.sassSupport || _.get(prompValues, 'sassSupport');
 
     let prompts = [
