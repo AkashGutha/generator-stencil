@@ -37,6 +37,7 @@
   "dependencies": {
     "chalk": "^2.1.0",
     "change-case": "^3.0.1",
+    "generator-license": "^5.2.0",
     "git-config": "0.0.7",
     "lodash": "^4.17.5",
     "yeoman-generator": "^2.0.1",
