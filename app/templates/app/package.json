@@ -26,7 +26,7 @@
     "jest": "^21.2.1"
     <%}%>
   },
-  "author": "Ionic Team",
+  "author": "<%=username%>",
   "license": "MIT" <%if(testSupport){%>,
   "jest": {
     "transform": {
