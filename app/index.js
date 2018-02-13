@@ -71,6 +71,13 @@ module.exports = class extends Generator {
       this.destinationPath(''),
       this.props
     );
+    this.composeWith(require.resolve('generator-license'), {
+      name: this.props.username,
+      email: this.props.email,
+      website: 'https://example.com',
+      licensePrompt: 'Which license do you want to use?', // (optional) customize license prompt text
+      defaultLicense: 'MIT' // (optional) Select a default license
+    });
     this.composeWith('stencil:page', {
       sassSupport: this.props.sassSupport,
       testSupport: this.props.testSupport
