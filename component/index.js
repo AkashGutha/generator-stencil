@@ -9,6 +9,7 @@ module.exports = class extends Generator {
     const prompValues = this.config.get('promptValues');
 
     const sassSupport = this.options.sassSupport || _.get(prompValues, 'sassSupport');
+    const testSupport = this.options.sassSupport || _.get(prompValues, 'testSupport');
 
     let prompts = [
       {
@@ -26,9 +27,17 @@ module.exports = class extends Generator {
         message: 'Want to enable Sass?'
       });
     }
+    if (testSupport === undefined) {
+      prompts.push({
+        type: 'confirm',
+        name: 'testSupport',
+        message: 'Want to add unit tests?'
+      });
+    }
 
     this.props = composeObjs(this.props, {
-      sassSupport: sassSupport
+      sassSupport: sassSupport,
+      testSupport: testSupport
     });
 
     return this.prompt(prompts).then(props => {
@@ -50,6 +59,18 @@ module.exports = class extends Generator {
       ),
       this.props
     );
+
+    if (this.props.testSupport) {
+      this.fs.copyTpl(
+        this.templatePath(`_component.spec.ts`),
+        this.destinationPath(
+          `src/components/${changeCase.paramCase(componentName)}/${changeCase.paramCase(
+            componentName
+          )}.spec.ts`
+        ),
+        this.props
+      );
+    }
 
     if (this.props.sassSupport) {
       this.fs.copyTpl(

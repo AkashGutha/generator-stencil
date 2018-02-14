@@ -7,7 +7,7 @@ import { Component } from '@stencil/core';
 export class <%=pageName%> {
   render() {
     return (
-      <div>
+      <div class="<%= paramCasePageName %>">
         <h1><%= pageName %></h1>
       </div>
     );
