@@ -39,9 +39,11 @@ yo stencil:page
 
 ## Roadmap
 
+- [ ] Automatic intelligent bundling
 - [ ] Life Cycle Events flag for components
 - [ ] Adding Events and Event listeners
 - [ ] Adding Forms
+- [ ] Improving audit scores
 
 ## License
 
