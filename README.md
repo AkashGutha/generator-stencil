@@ -47,7 +47,7 @@ yo stencil:page
 
 ## License
 
-MIT © [Akash Gutha](twiiter.com/AkashGutha)
+MIT © [Akash Gutha](twitter.com/AkashGutha)
 
 
 [npm-image]: https://badge.fury.io/js/generator-stencil.svg
