@@ -16,6 +16,13 @@ Then generate your new project:
 yo stencil
 ```
 
+what does this generator support?
+
+1. Stencil Router
+2. Tests
+
+more coming soon.. check Roadmap
+
 ## Sub-generators
 
 Stencil generator comes with a few sub generators that will help you scaffold faster and easier web-components
@@ -29,6 +36,12 @@ yo stencil:component
 ```bash
 yo stencil:page
 ```
+
+## Roadmap
+
+- [ ] Life Cycle Events flag for components
+- [ ] Adding Events and Event listeners
+- [ ] Adding Forms
 
 ## License
 
