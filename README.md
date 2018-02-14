@@ -16,9 +16,23 @@ Then generate your new project:
 yo stencil
 ```
 
+## Sub-generators
+
+Stencil generator comes with a few sub generators that will help you scaffold faster and easier web-components
+
+1. Component generator 
+```bash
+yo stencil:component
+```
+
+2. Page generator
+```bash
+yo stencil:page
+```
+
 ## License
 
-MIT © [AkashGutha]()
+MIT © [Akash Gutha](twiiter.com/AkashGutha)
 
 
 [npm-image]: https://badge.fury.io/js/generator-stencil.svg
