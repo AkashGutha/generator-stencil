@@ -54,7 +54,7 @@ module.exports = class extends Generator {
     this.props.paramCaseComponentName = paramCaseComponentName;
 
     this.fs.copyTpl(
-      this.templatePath(`_page.tsx`),
+      this.templatePath(`_component.tsx`),
       this.destinationPath(
         `src/pages/${paramCaseComponentName}/${paramCaseComponentName}.tsx`
       ),
@@ -63,7 +63,7 @@ module.exports = class extends Generator {
 
     if (this.props.testSupport) {
       this.fs.copyTpl(
-        this.templatePath(`_page.spec.ts`),
+        this.templatePath(`_component.spec.ts`),
         this.destinationPath(
           `src/pages/${paramCaseComponentName}/${paramCaseComponentName}.spec.ts`
         ),
@@ -73,7 +73,7 @@ module.exports = class extends Generator {
 
     if (this.props.stylingSupport.includes('Sass')) {
       this.fs.copyTpl(
-        this.templatePath(`_page.scss`),
+        this.templatePath(`_component.scss`),
         this.destinationPath(
           `src/pages/${paramCaseComponentName}/${paramCaseComponentName}.scss`
         ),
@@ -81,7 +81,7 @@ module.exports = class extends Generator {
       );
     } else {
       this.fs.copyTpl(
-        this.templatePath(`_page.css`),
+        this.templatePath(`_component.css`),
         this.destinationPath(
           `src/pages/${paramCaseComponentName}/${paramCaseComponentName}.css`
         ),
