@@ -7,8 +7,9 @@ const composeObjs = require('./../utils/ComposeObjects');
 module.exports = class extends Generator {
   prompting() {
     const prompValues = this.config.get('promptValues');
-    const stylingSupport = this.options.stylingSupport || _.get(prompValues, 'stylingSupport');
-    const testSupport = this.options.stylingSupport || _.get(prompValues, 'testSupport');
+    const stylingSupport =
+      this.options.stylingSupport || _.get(prompValues, 'stylingSupport');
+    const testSupport = this.options.testSupport || _.get(prompValues, 'testSupport');
 
     let prompts = [
       {
@@ -19,6 +20,14 @@ module.exports = class extends Generator {
       }
     ];
 
+    if (stylingSupport === undefined) {
+      prompts.push({
+        type: 'list',
+        name: 'stylingSupport',
+        message: 'Select a stlying option?',
+        choices: ['Sass', 'PostCSS']
+      });
+    }
     if (testSupport === undefined) {
       prompts.push({
         type: 'confirm',
@@ -40,15 +49,12 @@ module.exports = class extends Generator {
 
   writing() {
     const pageName = this.props.pageName;
-    this.props.paramCasePageName = changeCase.paramCase(pageName);
+    const paramCasePageName = changeCase.paramCase(pageName);
+    this.props.paramCasePageName = paramCasePageName;
 
     this.fs.copyTpl(
       this.templatePath(`_page.tsx`),
-      this.destinationPath(
-        `src/pages/${changeCase.paramCase(pageName)}/${changeCase.paramCase(
-          pageName
-        )}.tsx`
-      ),
+      this.destinationPath(`src/pages/${paramCasePageName}/${paramCasePageName}.tsx`),
       this.props
     );
 
@@ -56,32 +62,22 @@ module.exports = class extends Generator {
       this.fs.copyTpl(
         this.templatePath(`_page.spec.ts`),
         this.destinationPath(
-          `src/pages/${changeCase.paramCase(pageName)}/${changeCase.paramCase(
-            pageName
-          )}.spec.ts`
+          `src/pages/${paramCasePageName}/${paramCasePageName}.spec.ts`
         ),
         this.props
       );
     }
 
-    if (this.props.stylingSupport) {
+    if (this.props.stylingSupport.includes('Sass')) {
       this.fs.copyTpl(
         this.templatePath(`_page.scss`),
-        this.destinationPath(
-          `src/pages/${changeCase.paramCase(pageName)}/${changeCase.paramCase(
-            pageName
-          )}.scss`
-        ),
+        this.destinationPath(`src/pages/${paramCasePageName}/${paramCasePageName}.scss`),
         this.props
       );
     } else {
       this.fs.copyTpl(
         this.templatePath(`_page.css`),
-        this.destinationPath(
-          `src/pages/${changeCase.paramCase(pageName)}/${changeCase.paramCase(
-            pageName
-          )}.css`
-        ),
+        this.destinationPath(`src/pages/${paramCasePageName}/${paramCasePageName}.css`),
         this.props
       );
     }

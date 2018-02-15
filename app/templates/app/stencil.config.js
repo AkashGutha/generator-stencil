@@ -3,5 +3,5 @@ exports.config = {
   bundles: [
     { components: [] }
   ],
-  collections: [{ name: '<%if(stencilRouterSupport){%>@stencil/router<%}%>' }]
+  collections: [{ name: '<%if(optionalFeatures.includes("Stencil Router")){%>@stencil/router<%}%>' }]
 };

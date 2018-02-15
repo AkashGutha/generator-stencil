@@ -8,8 +8,9 @@ module.exports = class extends Generator {
   prompting() {
     const prompValues = this.config.get('promptValues');
 
-    const stylingSupport = this.options.stylingSupport || _.get(prompValues, 'stylingSupport');
-    const testSupport = this.options.stylingSupport || _.get(prompValues, 'testSupport');
+    const stylingSupport =
+      this.options.stylingSupport || _.get(prompValues, 'stylingSupport');
+    const testSupport = this.options.testSupport || _.get(prompValues, 'testSupport');
 
     let prompts = [
       {
@@ -22,9 +23,10 @@ module.exports = class extends Generator {
 
     if (stylingSupport === undefined) {
       prompts.push({
-        type: 'confirm',
+        type: 'list',
         name: 'stylingSupport',
-        message: 'Want to enable Sass?'
+        message: 'Select a stlying option?',
+        choices: ['Sass', 'PostCSS']
       });
     }
     if (testSupport === undefined) {
@@ -48,47 +50,40 @@ module.exports = class extends Generator {
 
   writing() {
     const componentName = this.props.componentName;
-    this.props.paramCaseComponentName = changeCase.paramCase(componentName);
+    const paramCaseComponentName = changeCase.paramCase(componentName);
+    this.props.paramCaseComponentName = paramCaseComponentName;
 
     this.fs.copyTpl(
-      this.templatePath(`_component.tsx`),
+      this.templatePath(`_page.tsx`),
       this.destinationPath(
-        `src/components/${changeCase.paramCase(componentName)}/${changeCase.paramCase(
-          componentName
-        )}.tsx`
+        `src/pages/${paramCaseComponentName}/${paramCaseComponentName}.tsx`
       ),
       this.props
     );
 
     if (this.props.testSupport) {
       this.fs.copyTpl(
-        this.templatePath(`_component.spec.ts`),
+        this.templatePath(`_page.spec.ts`),
         this.destinationPath(
-          `src/components/${changeCase.paramCase(componentName)}/${changeCase.paramCase(
-            componentName
-          )}.spec.ts`
+          `src/pages/${paramCaseComponentName}/${paramCaseComponentName}.spec.ts`
         ),
         this.props
       );
     }
 
-    if (this.props.stylingSupport) {
+    if (this.props.stylingSupport.includes('Sass')) {
       this.fs.copyTpl(
-        this.templatePath(`_component.scss`),
+        this.templatePath(`_page.scss`),
         this.destinationPath(
-          `src/components/${changeCase.paramCase(componentName)}/${changeCase.paramCase(
-            componentName
-          )}.scss`
+          `src/pages/${paramCaseComponentName}/${paramCaseComponentName}.scss`
         ),
         this.props
       );
     } else {
       this.fs.copyTpl(
-        this.templatePath(`_component.css`),
+        this.templatePath(`_page.css`),
         this.destinationPath(
-          `src/components/${changeCase.paramCase(componentName)}/${changeCase.paramCase(
-            componentName
-          )}.css`
+          `src/pages/${paramCaseComponentName}/${paramCaseComponentName}.css`
         ),
         this.props
       );

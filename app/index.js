@@ -62,8 +62,7 @@ module.exports = class extends Generator {
 
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
-      this.props = props;
-      this.props = composeObjs(this.props, { username: name }, { email: email });
+      this.props = composeObjs(props, { username: name }, { email: email });
     });
   }
 
@@ -73,6 +72,7 @@ module.exports = class extends Generator {
       this.destinationPath(''),
       this.props
     );
+
     this.composeWith(require.resolve('generator-license'), {
       name: this.props.username,
       email: this.props.email,
@@ -80,14 +80,9 @@ module.exports = class extends Generator {
       licensePrompt: 'Which license do you want to use?', // (optional) customize license prompt text
       defaultLicense: 'MIT' // (optional) Select a default license
     });
-    this.composeWith('stencil:page', {
-      stylingSupport: this.props.stylingSupport,
-      testSupport: this.props.testSupport
-    });
-    this.composeWith('stencil:component', {
-      stylingSupport: this.props.stylingSupport,
-      testSupport: this.props.testSupport
-    });
+
+    this.composeWith('stencil:page', this.props);
+    this.composeWith('stencil:component', this.props);
   }
 
   install() {
