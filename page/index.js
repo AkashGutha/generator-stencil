@@ -10,6 +10,7 @@ module.exports = class extends Generator {
     const stylingSupport =
       this.options.stylingSupport || _.get(prompValues, 'stylingSupport');
     const testSupport = this.options.testSupport || _.get(prompValues, 'testSupport');
+    const optionalFeatures = this.options.optionalFeatures || _.get(prompValues, 'optionalFeatures');
 
     let prompts = [
       {
@@ -38,7 +39,8 @@ module.exports = class extends Generator {
 
     this.props = composeObjs(this.props, {
       stylingSupport: stylingSupport,
-      testSupport: testSupport
+      testSupport: testSupport,
+      optionalFeatures: optionalFeatures
     });
 
     return this.prompt(prompts).then(props => {
