@@ -39,6 +39,9 @@ yo stencil:page
 
 ## Roadmap
 
+- [x] Sass and PostCSS support
+- [x] Stencil Router support
+- [x] Test's support
 - [ ] Automatic intelligent bundling
 - [ ] Life Cycle Events flag for components
 - [ ] Adding Events and Event listeners
