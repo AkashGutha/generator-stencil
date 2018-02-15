@@ -7,8 +7,8 @@ const composeObjs = require('./../utils/ComposeObjects');
 module.exports = class extends Generator {
   prompting() {
     const prompValues = this.config.get('promptValues');
-    const sassSupport = this.options.sassSupport || _.get(prompValues, 'sassSupport');
-    const testSupport = this.options.sassSupport || _.get(prompValues, 'testSupport');
+    const stylingSupport = this.options.stylingSupport || _.get(prompValues, 'stylingSupport');
+    const testSupport = this.options.stylingSupport || _.get(prompValues, 'testSupport');
 
     let prompts = [
       {
@@ -28,7 +28,7 @@ module.exports = class extends Generator {
     }
 
     this.props = composeObjs(this.props, {
-      sassSupport: sassSupport,
+      stylingSupport: stylingSupport,
       testSupport: testSupport
     });
 
@@ -64,7 +64,7 @@ module.exports = class extends Generator {
       );
     }
 
-    if (this.props.sassSupport) {
+    if (this.props.stylingSupport) {
       this.fs.copyTpl(
         this.templatePath(`_page.scss`),
         this.destinationPath(

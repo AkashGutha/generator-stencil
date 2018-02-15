@@ -39,21 +39,23 @@ module.exports = class extends Generator {
         default: 'description'
       },
       {
-        type: 'confirm',
-        name: 'sassSupport',
+        type: 'list',
+        name: 'stylingSupport',
         message: 'Want to enable Sass?',
+        choices: ['Sass', 'PostCSS'],
+        store: true
+      },
+      {
+        type: 'checkbox',
+        name: 'optionalFeatures',
+        message: 'Choose the features that you want?',
+        choices: ['Helmet', 'Stencil Router', 'Webpack', 'Redux'],
         store: true
       },
       {
         type: 'confirm',
         name: 'testSupport',
         message: 'Want to enable Unit testing?',
-        store: true
-      },
-      {
-        type: 'confirm',
-        name: 'stencilRouterSupport',
-        message: 'Want to include stencil router?',
         store: true
       }
     ];
@@ -79,11 +81,11 @@ module.exports = class extends Generator {
       defaultLicense: 'MIT' // (optional) Select a default license
     });
     this.composeWith('stencil:page', {
-      sassSupport: this.props.sassSupport,
+      stylingSupport: this.props.stylingSupport,
       testSupport: this.props.testSupport
     });
     this.composeWith('stencil:component', {
-      sassSupport: this.props.sassSupport,
+      stylingSupport: this.props.stylingSupport,
       testSupport: this.props.testSupport
     });
   }

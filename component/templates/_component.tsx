@@ -2,7 +2,7 @@ import { Component } from '@stencil/core';
 
 @Component({
   tag: '<%= paramCaseComponentName %>',
-  styleUrl: '<%= paramCaseComponentName %>.<% if(sassSupport) { %>scss<% } %><% if(!sassSupport) { %>css<% } %>'
+  styleUrl: '<%= paramCaseComponentName %>.<% if(stylingSupport) { %>scss<% } %><% if(!stylingSupport) { %>css<% } %>'
 })
 export class <%=componentName%> {
   render() {
