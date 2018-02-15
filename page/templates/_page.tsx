@@ -19,7 +19,6 @@ export class <%=pageName%> {
         <Helmet>
           <title>{this.title}</title>
           <meta name="description" content={this.description} />
-          <link rel="stylesheet" href="<%=paramCasePageName%>.<% if(stylingSupport.includes("Sass")) { %>scss<% } %><% if(!stylingSupport.includes("Sass")) { %>css<% } %>" />
         </Helmet>
         <% } %>
       </div>
