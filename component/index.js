@@ -56,7 +56,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath(`_component.tsx`),
       this.destinationPath(
-        `src/pages/${paramCaseComponentName}/${paramCaseComponentName}.tsx`
+        `src/components/${paramCaseComponentName}/${paramCaseComponentName}.tsx`
       ),
       this.props
     );
@@ -65,7 +65,7 @@ module.exports = class extends Generator {
       this.fs.copyTpl(
         this.templatePath(`_component.spec.ts`),
         this.destinationPath(
-          `src/pages/${paramCaseComponentName}/${paramCaseComponentName}.spec.ts`
+          `src/components/${paramCaseComponentName}/${paramCaseComponentName}.spec.ts`
         ),
         this.props
       );
@@ -75,7 +75,7 @@ module.exports = class extends Generator {
       this.fs.copyTpl(
         this.templatePath(`_component.scss`),
         this.destinationPath(
-          `src/pages/${paramCaseComponentName}/${paramCaseComponentName}.scss`
+          `src/components/${paramCaseComponentName}/${paramCaseComponentName}.scss`
         ),
         this.props
       );
@@ -83,7 +83,7 @@ module.exports = class extends Generator {
       this.fs.copyTpl(
         this.templatePath(`_component.css`),
         this.destinationPath(
-          `src/pages/${paramCaseComponentName}/${paramCaseComponentName}.css`
+          `src/components/${paramCaseComponentName}/${paramCaseComponentName}.css`
         ),
         this.props
       );
