@@ -16,8 +16,9 @@
     <%}%>
   },
   "dependencies": {
-    "@stencil/core": "0.4.0",
-    "@stencil/router": "latest"
+    "@stencil/core": "latest"<% if (optionalFeatures.includes('Stencil Router')) { %>,
+    "@stencil/router": "latest"<% } %><% if (optionalFeatures.includes('Helmet')) { %>,
+    "@stencil/helmet": "latest"<% } %>
   },
   "devDependencies": {
     "@stencil/dev-server": "latest",
