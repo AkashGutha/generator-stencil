@@ -2,20 +2,20 @@
 <% if (stylingSupport.includes('CSS')) { %>const postcss = require('@stencil/postcss');
 const autoprefixer = require('autoprefixer');<% } %>
 
-    exports.config = {
+exports.config = {
   publicPath: '/dist',
     plugins: [
       <% if (stylingSupport.includes('Sass')) { %>sass(),<% } %>
-      <% if (stylingSupport.includes('CSS')) { %>postcss({
-        plugins: [autoprefixer()]
-      }),<% } %>
+      <% if (stylingSupport.includes('CSS')) { %>postcss({plugins: [autoprefixer()]}),<% } %>
     ],
-      bundles: [
+    bundles: [
         { components: [] }
-      ],
-        collections: [{
-          name: '<%if(optionalFeatures.includes("Stencil Router")){%>@stencil/router<%}%>'
-        },{
-          name: '<%if(optionalFeatures.includes("Helmet")){%>@stencil/helmet<%}%>'
-        }]
+    ],
+    collections: [{
+      name: '<%if(optionalFeatures.includes("Stencil Router")){%>@stencil/router<%}%>'
+    },
+    {
+      name: '<%if(optionalFeatures.includes("Helmet")){%>@stencil/helmet<%}%>'
+    }
+  ]
 };
