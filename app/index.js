@@ -41,7 +41,7 @@ module.exports = class extends Generator {
       {
         type: 'list',
         name: 'stylingSupport',
-        message: 'Want to enable Sass?',
+        message: 'Select a stlying option?',
         choices: ['Sass', 'PostCSS'],
         store: true
       },
