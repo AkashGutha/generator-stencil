@@ -1,0 +1,1 @@
+# Application generator - `yo stencil`
