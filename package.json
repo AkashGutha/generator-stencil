@@ -40,8 +40,7 @@
   "scripts": {
     "prepublish": "nsp check",
     "pretest": "eslint .",
-    "precommit": "lint-staged",
-    "test": "jest"
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.js": ["eslint --fix", "git add"],
