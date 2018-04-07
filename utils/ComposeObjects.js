@@ -6,4 +6,6 @@ function composeObjs(...args) {
   return obj;
 }
 
-module.exports = composeObjs;
+module.exports = {
+  composeObjs
+};
