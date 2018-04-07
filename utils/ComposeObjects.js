@@ -1,3 +1,5 @@
+'use strict';
+
 function composeObjs(...args) {
   let obj = {};
   for (const argument of args) {
