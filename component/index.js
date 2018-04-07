@@ -2,7 +2,7 @@
 const Generator = require('yeoman-generator');
 const changeCase = require('change-case');
 const _ = require('lodash');
-const composeObjs = require('./../utils/ComposeObjects');
+const composeObjs = require('./../utils/composeObjects');
 
 module.exports = class extends Generator {
   prompting() {
