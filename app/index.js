@@ -2,7 +2,7 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const composeObjs = require('./../utils/composeObjects');
+const composeObjs = require('../utils/composeObjects');
 
 module.exports = class extends Generator {
   constructor(args, opts) {
