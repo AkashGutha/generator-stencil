@@ -2,7 +2,6 @@
 const Generator = require('yeoman-generator');
 const changeCase = require('change-case');
 const _ = require('lodash');
-const { composeObjs } = require('../utils');
 
 module.exports = class extends Generator {
   prompting() {
@@ -38,7 +37,7 @@ module.exports = class extends Generator {
       });
     }
 
-    this.props = composeObjs(this.props, {
+    this.props = _.assign(this.props, {
       stylingSupport: stylingSupport,
       testSupport: testSupport,
       optionalFeatures: optionalFeatures
@@ -46,7 +45,7 @@ module.exports = class extends Generator {
 
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
-      this.props = composeObjs(this.props, props);
+      this.props = _.assign(this.props, props);
     });
   }
 

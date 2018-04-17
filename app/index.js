@@ -2,7 +2,7 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const { composeObjs } = require('../utils');
+const _ = require('lodash');
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -60,7 +60,7 @@ module.exports = class extends Generator {
 
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
-      this.props = composeObjs(props, { username: name }, { email: email });
+      this.props = _.assign(props, { username: name }, { email: email });
     });
   }
 
