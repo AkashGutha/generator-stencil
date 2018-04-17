@@ -1,5 +1,3 @@
-'use strict';
-
 function composeObjs(...args) {
   let obj = {};
   for (const argument of args) {
@@ -9,5 +7,5 @@ function composeObjs(...args) {
 }
 
 module.exports = {
-  composeObjs
+  composeObjs: composeObjs
 };
