@@ -8,7 +8,7 @@
     "email": "akash.gutha@outlook.com",
     "url": ""
   },
-  "files": ["app", "component", "page"],
+  "files": ["app", "component", "page", "utils"],
   "main": "app/index.js",
   "keywords": ["stencil", "js", "javascript", "yeoman-generator"],
   "devDependencies": {
