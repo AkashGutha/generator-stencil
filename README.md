@@ -1,4 +1,11 @@
-# generator-stencil [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+<div align="center">
+<a href="https://www.emojione.com/emoji/1f528">
+<img src="./assets/hammer.png"/>
+</a>
+<h1>generator-stencil</h1>
+</div>
+
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 > scaffolding tool for stencil compiler
 
 ## Installation
