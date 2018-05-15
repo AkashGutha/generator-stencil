@@ -23,7 +23,8 @@
     "nsp": "^2.6.3",
     "prettier": "^1.11.1",
     "yeoman-assert": "^3.1.1",
-    "yeoman-test": "^1.7.0"
+    "yeoman-test": "^1.7.0",
+    "snyk": "^1.80.0"
   },
   "dependencies": {
     "chalk": "^2.3.2",
@@ -40,7 +41,8 @@
   "scripts": {
     "prepublish": "nsp check",
     "pretest": "eslint .",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "test": "snyk test"
   },
   "lint-staged": {
     "*.js": ["eslint --fix", "git add"],
