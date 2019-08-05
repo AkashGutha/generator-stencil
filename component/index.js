@@ -9,6 +9,7 @@ module.exports = class extends Generator {
     const stylingSupport =
       this.options.stylingSupport || _.get(prompValues, 'stylingSupport');
     const testSupport = this.options.testSupport || _.get(prompValues, 'testSupport');
+    const jsxSupport = this.options.jsxSupport || _.get(prompValues, 'jsxSupport');
 
     let prompts = [
       {
@@ -27,6 +28,7 @@ module.exports = class extends Generator {
         choices: ['Sass', 'PostCSS']
       });
     }
+
     if (testSupport === undefined) {
       prompts.push({
         type: 'confirm',
@@ -35,9 +37,18 @@ module.exports = class extends Generator {
       });
     }
 
+    if (jsxSupport === undefined) {
+      prompts.push({
+        type: 'confirm',
+        name: 'jsxSupport',
+        message: 'Support JSX?'
+      });
+    }
+
     this.props = _.assign(this.props, {
       stylingSupport: stylingSupport,
-      testSupport: testSupport
+      testSupport: testSupport,
+      jsxSupport: jsxSupport
     });
 
     return this.prompt(prompts).then(props => {

@@ -1,5 +1,5 @@
 import { render } from '@stencil/core/testing';
-import { <%=componentName%> } from './<%=paramCaseComponentName%>';
+import { <%=componentName%><% if (jsxSupport) { %>, h<% } %> } from './<%=paramCaseComponentName%>';
 
 describe('<%=paramCaseComponentName%>', () => {
   it('should build', () => {
