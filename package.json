@@ -1,6 +1,6 @@
 {
   "name": "generator-stencil",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "scaffolding tool for stencil compiler",
   "homepage": "https://akashgutha.github.io/generator-stencil/",
   "author": {
