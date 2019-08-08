@@ -1,4 +1,4 @@
-import { Component } from '@stencil/core';
+import { Component<% if (jsxSupport) { %>, h<% } %> } from '@stencil/core';
 
 @Component({
   tag: '<%= paramCaseComponentName %>',
