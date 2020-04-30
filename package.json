@@ -8,9 +8,19 @@
     "email": "akash.gutha@outlook.com",
     "url": "https://akashgutha.github.io"
   },
-  "files": ["app", "component", "page", "utils"],
+  "files": [
+    "app",
+    "component",
+    "page",
+    "utils"
+  ],
   "main": "app/index.js",
-  "keywords": ["stencil", "js", "javascript", "yeoman-generator"],
+  "keywords": [
+    "stencil",
+    "js",
+    "javascript",
+    "yeoman-generator"
+  ],
   "devDependencies": {
     "coveralls": "^2.13.1",
     "eslint": "^4.19.1",
@@ -23,8 +33,7 @@
     "nsp": "^2.6.3",
     "prettier": "^1.11.1",
     "yeoman-assert": "^3.1.1",
-    "yeoman-test": "^1.7.0",
-    "snyk": "^1.80.0"
+    "yeoman-test": "^1.7.0"
   },
   "dependencies": {
     "chalk": "^2.3.2",
@@ -33,23 +42,34 @@
     "git-config": "0.0.7",
     "lodash": "^4.17.12",
     "yeoman-generator": "^2.0.5",
-    "yosay": "^2.0.2"
+    "yosay": "^2.0.2",
+    "snyk": "^1.316.1"
   },
   "jest": {
     "testEnvironment": "node"
   },
   "scripts": {
-    "prepublish": "nsp check",
+    "prepublish": "npm run snyk-protect && nsp check",
     "pretest": "eslint .",
     "precommit": "lint-staged",
-    "test": "snyk test"
+    "test": "snyk test",
+    "snyk-protect": "snyk protect"
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"],
-    "*.json": ["prettier --write", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "eslintConfig": {
-    "extends": ["xo", "prettier"],
+    "extends": [
+      "xo",
+      "prettier"
+    ],
     "env": {
       "jest": true,
       "node": true
@@ -63,8 +83,11 @@
         }
       ]
     },
-    "plugins": ["prettier"]
+    "plugins": [
+      "prettier"
+    ]
   },
   "repository": "AkashGutha/generator-stencil",
-  "license": "MIT"
+  "license": "MIT",
+  "snyk": true
 }
