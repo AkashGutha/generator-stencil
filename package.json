@@ -31,7 +31,7 @@
     "change-case": "^3.0.2",
     "generator-license": "^5.4.0",
     "git-config": "0.0.7",
-    "lodash": "^4.17.12",
+    "lodash": "^4.17.16",
     "yeoman-generator": "^2.0.5",
     "yosay": "^2.0.2"
   },
